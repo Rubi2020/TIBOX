@@ -6,7 +6,7 @@
 <link>ignore</link>
 <thumbnail>https://www.matchmoney.com.gr/wp-content/uploads/2020/03/series.png</thumbnail>
 <fanart></fanart>    
-<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/GR-TV-SERIES-MASTER.xml</externallink>
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/COMPLATE</externallink>
 <info>[B][/B] [COLOR=cyan][/COLOR] </info>
 </item>
 
@@ -15,8 +15,8 @@
 <link>ignore</link>
 <thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
 <fanart></fanart>    
-<externallink></externallink>
-<info>[B][/B] [COLOR=cyan][/COLOR] </info>
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/VOODY.ONLINE</externallink>
+<info>[B]Ταινίες online[/B] [COLOR=cyan] με ελληνικους υποτιτλους ολοκληρες [/COLOR] </info>
 </item>
 
 <item>
@@ -24,8 +24,8 @@
 <link>ignore</link>
 <thumbnail>https://filma-24.cc/wp-content/uploads/2019/12/get-image-2.png</thumbnail>
 <fanart></fanart>    
-<externallink></externallink>
-<info>[B][/B] [COLOR=cyan][/COLOR] </info>
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/FILMA24</externallink>
+<info>[B]Filma HD [/B] [COLOR=cyan]me titra shqip[/COLOR] </info>
 </item>
 
 <item>
@@ -33,7 +33,7 @@
 <link>ignore</link>
 <thumbnail>https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Puhutv_logo.svg/1280px-Puhutv_logo.svg.png</thumbnail>
 <fanart></fanart>    
-<externallink></externallink>
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/PUHUTV</externallink>
 <info>[B][/B] [COLOR=cyan][/COLOR] </info>
 </item>
 
@@ -42,7 +42,7 @@
 <link>ignore</link>
 <thumbnail>https://123tvseries.co/img/logo.png</thumbnail>
 <fanart></fanart>    
-<externallink></externallink>
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/123tvseries</externallink>
 <info>[B][/B] [COLOR=cyan][/COLOR] </info>
 </item>
 
