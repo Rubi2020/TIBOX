@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<streamingInfos>
+
+
+<item>
+<title>ΣΕΙΡΕΣ | ΑΡΧΙΚΗ</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3]  [COLOR dodgerblue][[makelist.param4]][/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',page_data)[0].replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\''))
+  mpage=re.findall('(\d+)</.{15,16}nav_ext',page_data)[0]
+  for pn in xrange(2,int(mpage)):
+    source=requests.get('http://voody.online/load/seir//page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'http://voody.online/load/seir/','accept':'*/*'}).content.replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\'')
+    list +=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',source)[0])
+  return list
+]]></expres>
+<page>http://voody.online/load/seir/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param1][/COLOR]</title>
+  <link>$doregex[makelist3]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('\{"playlist":(?s)(.*?)</script',page_data)[0]
+  if '"Season' in list:
+    return re.findall('\{"comment":"([^"]+).+?\[(?s)(.*?)\]',list)
+  else:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>makelist3</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist3.param1][/COLOR]</title>
+  <link>[makelist3.param2]|user-agent=ipad</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,urllib
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  if 'pisode' in page_data:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',page_data)
+  else:
+     source=urllib.urlopen('[makelist.param2]').read()
+     list=re.findall('\{"playlist":(?s)(.*?)</script',source)[0]
+     return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist2.param2]</page>
+</regex>
+<thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
+</item>
+
+
+<item>
+<title>ΣΕΙΡΕΣ | ΤΑ ΚΑΛΥΤΕΡΑ</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3]  [COLOR dodgerblue][[makelist.param4]][/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',page_data)[0].replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\''))
+  mpage=re.findall('(\d+)</.{15,16}nav_ext',page_data)[0]
+  for pn in xrange(2,int(mpage)):
+    source=requests.get('http://voody.online/f/from-year=1990/to-year=2018/from-rating=0/to-rating=10/cat=21/order=desc/order_by=news_read//page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'http://voody.online/f/from-year=1990/to-year=2018/from-rating=0/to-rating=10/cat=21/order=desc/order_by=news_read/','accept':'*/*'}).content.replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\'')
+    list +=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',source)[0])
+  return list
+]]></expres>
+<page>http://voody.online/f/from-year=1990/to-year=2018/from-rating=0/to-rating=10/cat=21/order=desc/order_by=news_read/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param1][/COLOR]</title>
+  <link>$doregex[makelist3]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('\{"playlist":(?s)(.*?)</script',page_data)[0]
+  if '"Season' in list:
+    return re.findall('\{"comment":"([^"]+).+?\[(?s)(.*?)\]',list)
+  else:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>makelist3</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist3.param1][/COLOR]</title>
+  <link>[makelist3.param2]|user-agent=ipad</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,urllib
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  if 'pisode' in page_data:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',page_data)
+  else:
+     source=urllib.urlopen('[makelist.param2]').read()
+     list=re.findall('\{"playlist":(?s)(.*?)</script',source)[0]
+     return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist2.param2]</page>
+</regex>
+<thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
+</item>
+
+
+<item>
+<title>ΣΕΙΡΕΣ | ΟΛΟΚΛΗΡΩΜΈΝΕΣ</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3]  [COLOR dodgerblue][[makelist.param4]][/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',page_data)[0].replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\''))
+  mpage=re.findall('(\d+)</.{15,16}nav_ext',page_data)[0]
+  for pn in xrange(2,int(mpage)):
+    source=requests.get('http://voody.online/load/oloklhrwmenes_seires//page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'http://voody.online/load/oloklhrwmenes_seires/','accept':'*/*'}).content.replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\'')
+    list +=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',source)[0])
+  return list
+]]></expres>
+<page>http://voody.online/load/oloklhrwmenes_seires/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param1][/COLOR]</title>
+  <link>$doregex[makelist3]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('\{"playlist":(?s)(.*?)</script',page_data)[0]
+  if '"Season' in list:
+    return re.findall('\{"comment":"([^"]+).+?\[(?s)(.*?)\]',list)
+  else:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>makelist3</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist3.param1][/COLOR]</title>
+  <link>[makelist3.param2]|user-agent=ipad</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,urllib
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  if 'pisode' in page_data:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',page_data)
+  else:
+     source=urllib.urlopen('[makelist.param2]').read()
+     list=re.findall('\{"playlist":(?s)(.*?)</script',source)[0]
+     return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist2.param2]</page>
+</regex>
+<thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
+</item>
+
+
+
+<item>
+<title>ΣΕΙΡΕΣ | ΑΝΑ ΗΜΕΡΟΜΗΝΙΑ</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3]  [COLOR dodgerblue][[makelist.param4]][/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',page_data)[0].replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\''))
+  mpage=re.findall('(\d+)</.{15,16}nav_ext',page_data)[0]
+  for pn in xrange(2,int(mpage)):
+    source=requests.get('http://voody.online/f/from-year=1990/to-year=2018/from-rating=0/to-rating=10/cat=21/order=desc/order_by=date//page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'http://voody.online/f/from-year=1990/to-year=2018/from-rating=0/to-rating=10/cat=21/order=desc/order_by=date/','accept':'*/*'}).content.replace('#038;','').replace('&#039;','\'').replace('&#8211;','-').replace('&#8217;','\'')
+    list +=re.findall('(?s)itemBody.+?src="([^"]+).+?class="title"><a\s*href="([^"]+).+?>(.*?)\s*\((\d+)',re.findall('"moviesList(?s)(.*?)pagi',source)[0])
+  return list
+]]></expres>
+<page>http://voody.online/f/from-year=1990/to-year=2018/from-rating=0/to-rating=10/cat=21/order=desc/order_by=date/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param1][/COLOR]</title>
+  <link>$doregex[makelist3]</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('\{"playlist":(?s)(.*?)</script',page_data)[0]
+  if '"Season' in list:
+    return re.findall('\{"comment":"([^"]+).+?\[(?s)(.*?)\]',list)
+  else:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>makelist3</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist3.param1][/COLOR]</title>
+  <link>[makelist3.param2]|user-agent=ipad</link>
+  <thumbnail>http://voody.online[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,urllib
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  if 'pisode' in page_data:
+    return re.findall('"comment":"([^"]+).+?file":"([^"]+)',page_data)
+  else:
+     source=urllib.urlopen('[makelist.param2]').read()
+     list=re.findall('\{"playlist":(?s)(.*?)</script',source)[0]
+     return re.findall('"comment":"([^"]+).+?file":"([^"]+)',list)
+]]></expres>
+<page>[makelist2.param2]</page>
+</regex>
+<thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
+</item>
