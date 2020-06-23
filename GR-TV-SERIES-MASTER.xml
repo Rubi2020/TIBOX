@@ -19,6 +19,16 @@
 <info>[B]Ταινίες online[/B] [COLOR=cyan] με ελληνικους υποτιτλους ολοκληρες [/COLOR] </info>
 </item>
 
+ <item>
+<title>[B][COLOR=tomato]TiBOX[/COLOR] | ΣΕΙΡΕΣ VOODY[/B]</title>
+<link>ignore</link>
+<thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
+<fanart></fanart>    
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/VOODY.ONLINE.SEIRES</externallink>
+<info>[B]Ταινίες online[/B] [COLOR=cyan] με ελληνικους υποτιτλους ολοκληρες [/COLOR] </info>
+</item>
+ 
+ 
 <item>
 <title>[B][COLOR=tomato]TiBOX[/COLOR] | FILMA24[/B]</title>
 <link>ignore</link>
