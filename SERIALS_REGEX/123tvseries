@@ -60,13 +60,13 @@ def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
 <item>
 <title>Reality Z</title>
 <link>$doregex[makelist]</link>
-<thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+<thumbnail>https://123tvseries.co/admin/covers/7bd6b859e65891f6f0264b5d1d45456e</thumbnail>
 <regex>
 <name>makelist</name>
 <listrepeat><![CDATA[
   <title>[makelist.param1]</title>
   <link>$doregex[makelist2]</link>
-  <thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+  <thumbnail>https://123tvseries.co/admin/covers/7bd6b859e65891f6f0264b5d1d45456e</thumbnail>
 ]]></listrepeat>
 <expres><![CDATA[#$pyFunction
 import re
@@ -80,7 +80,7 @@ def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
 <listrepeat><![CDATA[
   <title>[makelist2.param3]</title>
   <link>$doregex[getUrl]</link>
-  <thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+  <thumbnail>https://123tvseries.co/admin/covers/7bd6b859e65891f6f0264b5d1d45456e</thumbnail>
 ]]></listrepeat>
 <expres><![CDATA[href.+?(episo.+?-(\d+))">([^<]+)]]></expres>
 <page>[makelist.param2]</page>
@@ -109,7 +109,7 @@ def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
 ]]></expres>
 <page>$doregex[jdata]</page>
 </regex>
-<thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+<thumbnail>https://123tvseries.co/admin/covers/7bd6b859e65891f6f0264b5d1d45456e</thumbnail>
 </item>
 
 
