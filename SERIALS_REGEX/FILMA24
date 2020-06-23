@@ -1,0 +1,328 @@
+<item>
+<title>FILMA24 HOME</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>
+
+<item>
+<title>FILMA24 NETFLIX</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/tag/netflix/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>
+
+<item>
+<title>FILMA24 NETFLIX</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/tag/netflix/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>
+
+<item>
+<title>FILMA24 AKSION</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/aksion/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>
+
+<item>
+<title>FILMA24 LUFTE</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/lufte/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>
+
+<item>
+<title>FILMA24 HINDI</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/hindi/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>
+
+<item>
+<title>FILMA24 TURK</title>
+<link>$doregex[makelist]</link>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist.param3] [COLOR dodgerblue]([makelist.param4])[/COLOR]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  list=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',page_data)[0])
+  for pn in xrange(2,6):
+    source=requests.get('https://www.filma24.ac/page/'+str(pn)+'/',headers={'user-agent':'Mozilla/5.0','referer':'https://www.filma24.ac/','accept':'*/*'}).content.replace('#038;','').replace('&#8211;','-')
+    list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
+  return list
+]]></expres>
+<page>https://www.filma24.ac/turk/</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[COLOR gold][makelist2.param2] [COLOR dodgerblue]([makelist.param3] - [makelist.param4])[/COLOR]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>[makelist.param4]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[data-servera="(\d+).+?>([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+<referer>https://www.filma24.ac/</referer>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):
+  url=re.findall('movie-player[\w\W]+?iframe.+?src="([^"]+)',page_data)[0];url='https:'+url if url.startswith('//') else url
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'[makelist.param2]?server=[makelist2.param1]','accept':'*/*'}).content
+  return  re.findall('(?:player.updateSrc|var\*player|)[\w\W]+?(?:sources|file|src):.+?[\'"](h[^\'"]+)',source)[0]+'|user-agent=ipad&referer='+url
+]]></expres>
+<page>[makelist.param2]?server=[makelist2.param1]</page>
+<referer>[makelist.param2]</referer>
+</regex>
+<thumbnail>https://www.filma24.ac/wp-content/themes/cr_filma_greenv2/assets/img/logo2020-1-BLU.png</thumbnail>
+</item>

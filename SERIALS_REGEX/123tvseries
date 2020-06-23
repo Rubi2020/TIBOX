@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<streamingInfos>
+
+
+<item>
+<title>Black List</title>
+<link>$doregex[makelist]</link>
+<thumbnail>https://123tvseries.co/admin/covers/233d0c1d9f7d0cb96383afee5c81148b</thumbnail>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[makelist.param1]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>https://123tvseries.co/admin/covers/233d0c1d9f7d0cb96383afee5c81148b</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  return re.findall('"text-color">([^<]+)(?s)(.*?)</table',re.findall('class="table">(?s)(.*?)<scrip',page_data)[0])
+]]></expres>
+<page>https://123tvseries.co/tvserie/the-blacklist-subtitles-2741602</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[makelist2.param3]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>https://123tvseries.co/admin/covers/233d0c1d9f7d0cb96383afee5c81148b</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[href.+?(episo.+?-(\d+))">([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>jdata</name>
+<expres><![CDATA[#$pyFunction
+import re,requests,json
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  headers={'user-agent':'Mozilla/5.0','referer':'https://123tvseries.co/[makelist2.param1]'}
+  return requests.post('https://123tvseries.co/dbquery.php?action=loadPlayer',headers=headers,data={'action':'loadPlayer'}).json()#content
+]]></expres>
+<page></page>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('player-container(?s)(.+?)</iframe',page_data)[0]
+  url,movID=re.findall('src="(.+?embed/([^?]+)[^"]+)',list)[0]
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'https://123tvseries.co/[makelist2.param1]'}).content
+  mp4=re.findall('<video[\w\W]*?src="(.+?mp4[^"]+)',source)[-1];mp4='https:'+mp4 if mp4.startswith('//') else mp4
+  fUrl=requests.get(mp4,headers={'user-agent':'Mozilla/5.0','referer':url},cookies={'movie_id':movID,'engine':'html5'},allow_redirects=False)
+  return fUrl.headers['Location']
+]]></expres>
+<page>$doregex[jdata]</page>
+</regex>
+<thumbnail>https://123tvseries.co/admin/covers/233d0c1d9f7d0cb96383afee5c81148b</thumbnail>
+</item>
+
+<item>
+<title>Reality Z</title>
+<link>$doregex[makelist]</link>
+<thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[makelist.param1]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  return re.findall('"text-color">([^<]+)(?s)(.*?)</table',re.findall('class="table">(?s)(.*?)<scrip',page_data)[0])
+]]></expres>
+<page>https://123tvseries.co/tvserie/reality-z-subtitles-10241238</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[makelist2.param3]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[href.+?(episo.+?-(\d+))">([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>jdata</name>
+<expres><![CDATA[#$pyFunction
+import re,requests,json
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  headers={'user-agent':'Mozilla/5.0','referer':'https://123tvseries.co/[makelist2.param1]'}
+  return requests.post('https://123tvseries.co/dbquery.php?action=loadPlayer',headers=headers,data={'action':'loadPlayer'}).json()#content
+]]></expres>
+<page></page>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('player-container(?s)(.+?)</iframe',page_data)[0]
+  url,movID=re.findall('src="(.+?embed/([^?]+)[^"]+)',list)[0]
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'https://123tvseries.co/[makelist2.param1]'}).content
+  mp4=re.findall('<video[\w\W]*?src="(.+?mp4[^"]+)',source)[-1];mp4='https:'+mp4 if mp4.startswith('//') else mp4
+  fUrl=requests.get(mp4,headers={'user-agent':'Mozilla/5.0','referer':url},cookies={'movie_id':movID,'engine':'html5'},allow_redirects=False)
+  return fUrl.headers['Location']
+]]></expres>
+<page>$doregex[jdata]</page>
+</regex>
+<thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+</item>
+
+
+<item>
+<title>Snowpiercer</title>
+<link>$doregex[makelist]</link>
+<thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+  <title>[makelist.param1]</title>
+  <link>$doregex[makelist2]</link>
+  <thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+import re
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  return re.findall('"text-color">([^<]+)(?s)(.*?)</table',re.findall('class="table">(?s)(.*?)<scrip',page_data)[0])
+]]></expres>
+<page>https://123tvseries.co/tvserie/snowpiercer-subtitles-6156584</page>
+</regex>
+<regex>
+<name>makelist2</name>
+<listrepeat><![CDATA[
+  <title>[makelist2.param3]</title>
+  <link>$doregex[getUrl]</link>
+  <thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[href.+?(episo.+?-(\d+))">([^<]+)]]></expres>
+<page>[makelist.param2]</page>
+</regex>
+<regex>
+<name>jdata</name>
+<expres><![CDATA[#$pyFunction
+import re,requests,json
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  headers={'user-agent':'Mozilla/5.0','referer':'https://123tvseries.co/[makelist2.param1]'}
+  return requests.post('https://123tvseries.co/dbquery.php?action=loadPlayer',headers=headers,data={'action':'loadPlayer'}).json()#content
+]]></expres>
+<page></page>
+</regex>
+<regex>
+<name>getUrl</name>
+<expres><![CDATA[#$pyFunction
+import re,requests
+def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
+  list=re.findall('player-container(?s)(.+?)</iframe',page_data)[0]
+  url,movID=re.findall('src="(.+?embed/([^?]+)[^"]+)',list)[0]
+  source=requests.get(url,headers={'user-agent':'Mozilla/5.0','referer':'https://123tvseries.co/[makelist2.param1]'}).content
+  mp4=re.findall('<video[\w\W]*?src="(.+?mp4[^"]+)',source)[-1];mp4='https:'+mp4 if mp4.startswith('//') else mp4
+  fUrl=requests.get(mp4,headers={'user-agent':'Mozilla/5.0','referer':url},cookies={'movie_id':movID,'engine':'html5'},allow_redirects=False)
+  return fUrl.headers['Location']
+]]></expres>
+<page>$doregex[jdata]</page>
+</regex>
+<thumbnail>https://123tvseries.co/admin/covers/86fc59e355cbabfa7a3df5adce301577</thumbnail>
+</item>
