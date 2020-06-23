@@ -256,10 +256,10 @@ def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
 
 
 <item>
-<title></title>
+<title>ΚΑΤΗΓΟΡΙΕΣ</title>
 <link>ignore</link>
 <thumbnail>https://www.matchmoney.com.gr/wp-content/uploads/2020/03/series.png</thumbnail>
 <fanart></fanart>    
-<externallink></externallink>
+<externallink>https://raw.githubusercontent.com/Rubi2020/TIBOX/master/SERIALS_REGEX/VOODY.ONLINE.SEIRES.CATEGORY</externallink>
 <info>[B]Τηλεοπτικες Σειρες [/B] [COLOR=cyan]με ελληνικούς υπότιτλους[/COLOR] </info>
 </item>
