@@ -253,3 +253,13 @@ def GetLSProData(page_data,Cookie_Jar,m):#streamwatcher2013
 </regex>
 <thumbnail>http://voody.online/templates/Flymix/images/logo.png</thumbnail>
 </item>
+
+
+<item>
+<title></title>
+<link>ignore</link>
+<thumbnail>https://www.matchmoney.com.gr/wp-content/uploads/2020/03/series.png</thumbnail>
+<fanart></fanart>    
+<externallink></externallink>
+<info>[B]Τηλεοπτικες Σειρες [/B] [COLOR=cyan]με ελληνικούς υπότιτλους[/COLOR] </info>
+</item>
