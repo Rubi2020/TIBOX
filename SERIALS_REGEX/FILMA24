@@ -141,7 +141,7 @@ def GetLSProData(page_data,Cookie_Jar,m):
 </item>
 
 <item>
-<title>FILMA24 NETFLIX</title>
+<title>FILMA24 LUFTE</title>
 <link>$doregex[makelist]</link>
 <regex>
 <name>makelist</name>
@@ -159,7 +159,7 @@ def GetLSProData(page_data,Cookie_Jar,m):
     list +=re.findall('(?s)image:url.([^\)"]+).+?href="(.*?)"\s*title="(.*?)\s*\((\d+)',re.findall('id="movies-grid">(?s)(.*?)pagina',source)[0])
   return list
 ]]></expres>
-<page>https://www.filma24.ac/tag/netflix/</page>
+<page>https://www.filma24.ac/lufte/</page>
 </regex>
 <regex>
 <name>makelist2</name>
